@@ -1,0 +1,10 @@
+/Users/sophina/DevOpps/src/main/java/com/example/web/DbCheckServlet.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/HealthServlet.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/controller/AuthController.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/dto/LoginRequest.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/dto/RegisterRequest.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/model/User.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/repository/UserRepository.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/service/AuthService.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/util/JwtUtil.java
+/Users/sophina/DevOpps/src/main/java/com/example/web/util/PasswordUtil.java
