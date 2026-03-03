@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: Department.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Represents a city department entity mapped to the departments
+ *              database table.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.model;
 
 import java.time.LocalDateTime;

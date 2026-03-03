@@ -1,4 +1,12 @@
--- Table for reports that users file --
+------------------------------------------------------------------
+-- Filename: report.sql
+-- Project: Infrastructure Reporting & Tracking System
+-- Description: Creates and defines the reports table used to store
+--              infrastructure reports submitted by users.
+-- Author: Carter Roberts
+-- Date Last Modified: 03/03/2026
+------------------------------------------------------------------
+
 CREATE TABLE reports
 (
     id            BIGSERIAL PRIMARY KEY, -- identifier for reports

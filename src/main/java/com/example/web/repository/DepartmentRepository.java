@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: DepartmentRepository.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Handles database operations for the departments table, 
+ *              including retrieval and persistence of department records.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.repository;
 
 import com.example.web.model.Department;

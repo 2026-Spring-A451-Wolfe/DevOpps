@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: DepartmentService.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Contains business logic for retrieving, creating, and managing
+ *              departments and their associated contact records.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.service;
 
 import com.example.web.dto.DepartmentContactDTO;

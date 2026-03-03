@@ -1,43 +1,23 @@
--- ============================================================
--- schema.sql
---
--- This file creates all the database tables for the NOLA
--- Infrastructure Reporting & Tracking System.
---
--- Tables must be created in this exact order due to foreign
--- key dependencies. Dropping tables must be done in reverse.
---
--- Creation Order:
---   1. departments   (no dependencies)
---   2. users         (no dependencies)
---   3. reports       (depends on users)
---   4. report_updates (depends on reports, users, departments)
---   5. report_images  (depends on reports)
---
--- HOW TO RUN:
---   Open DataGrip, connect to your local nola_db database,
---   open this file and click Run.
--- ============================================================
+------------------------------------------------------------------
+-- Filename: schema.sql
+-- Project: Infrastructure Reporting & Tracking System
+-- Description: Creates and defines all project databse tables.
+-- Author: Sophina Nichols
+-- Date Last Modified: 03/03/2026
+------------------------------------------------------------------
 
--- ============================================================
--- 1. DEPARTMENTS
--- Stores the city departments that can be assigned to reports.
--- This table has no foreign key dependencies so it is created first.
--- ============================================================
-
--- =========================================
--- DEPARTMENTS
--- =========================================
+-- DEPARTMENTS --
+-- Stores city departments that can be assigned to reports.
 CREATE TABLE departments (
     id              BIGSERIAL PRIMARY KEY,
     name            VARCHAR(150) NOT NULL UNIQUE,
     description     TEXT,
     created_at      TIMESTAMP NOT NULL DEFAULT NOW()
 );
--- =========================================
--- DEPARTMENT CONTACTS (Multiple phone numbers / websites)
--- =========================================
 
+-- DEPARTMENT CONTACTS --
+-- Stores department contact information.
+-- Allows multiple contact methods per department.
 CREATE TABLE department_contacts (
     id              BIGSERIAL PRIMARY KEY,
     department_id   INTEGER NOT NULL REFERENCES departments(id) ON DELETE CASCADE,
@@ -47,11 +27,8 @@ CREATE TABLE department_contacts (
     is_emergency    BOOLEAN DEFAULT FALSE
 );
 
--- ============================================================
--- USERS
--- Stores all registered users of the system.
--- Roles: Citizen (submit reports) or Admin (manage reports).
--- ============================================================
+-- USERS --
+-- Stores all registered users and assigns roles.
 CREATE TABLE users (
     id              BIGSERIAL PRIMARY KEY,
     username        VARCHAR(20) NOT NULL UNIQUE,
@@ -65,12 +42,10 @@ CREATE TABLE users (
     date_created      TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- ============================================================
--- 3. REPORTS
--- Stores all infrastructure reports submitted by users.
--- last_update_id FK is added after report_updates is created
+-- REPORTS -- 
+-- Stores infrastructure reports submitted by users.
+-- last_update_id foreign key is added after report_updates table is created 
 -- to avoid circular dependency.
--- ============================================================
 CREATE TABLE reports (
     id              BIGSERIAL PRIMARY KEY,
     title           VARCHAR(50) NOT NULL,
@@ -92,12 +67,10 @@ CREATE TABLE reports (
     created_at      TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at      TIMESTAMP NOT NULL DEFAULT NOW(),
 );
--- ============================================================
--- 4. REPORT_UPDATES
+
+-- REPORT UPDATES --
 -- Tracks every status change made to a report.
--- Creates a full history log of who changed what and when.
--- Depends on reports, users, and departments tables.
--- ============================================================
+-- Maintains a compelte audit/history log.
 CREATE TABLE report_updates (
     id              BIGSERIAL PRIMARY KEY
     report_id       BIGINT NOT NULL
@@ -119,20 +92,14 @@ CREATE TABLE report_updates (
     updated_at      TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- ============================================================
--- Add last_update_id FK to reports now that report_updates exists
--- ============================================================
+-- Add last_update_id foreign key to reports
 ALTER TABLE reports
     ADD CONSTRAINT reports_report_updates_id_fk
         FOREIGN KEY (last_update_id) REFERENCES report_updates(id);
 
-
--- ============================================================
--- 5. REPORT_IMAGES
+-- REPORT IMAGES --
 -- Stores images attached to reports.
--- Either image_url (cloud) or file_path (local) will be used.
--- Depends on reports table.
--- ============================================================
+-- Either image_url (cloud) or file_path (local) may be used.
 CREATE TABLE report_images (
     id              BIGSERIAL PRIMARY KEY,
     report_id       BIGINT NOT NULL
@@ -143,21 +110,5 @@ CREATE TABLE report_images (
     uploaded_at     TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- ============================================================
--- INDEXES
--- Speeds up common queries used by the map view and filters.
--- ============================================================
---CREATE INDEX IF NOT EXISTS idx_reports_status
-  --  ON reports(status);
-
---CREATE INDEX IF NOT EXISTS idx_reports_category
-  --  ON reports(category);
-
---CREATE INDEX IF NOT EXISTS idx_reports_created_by
-  --  ON reports(created_by);
-
---CREATE INDEX IF NOT EXISTS idx_reports_location
-  --  ON reports(latitude, longitude);
-
---CREATE INDEX IF NOT EXISTS idx_report_updates_report_id
-  --  ON report_updates(report_id);
+-- INDEXES --
+-- Speeds up common queries (map view, filters, dashboards).

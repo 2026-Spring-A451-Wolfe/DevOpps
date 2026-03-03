@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: DepartmentContact.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Represents a department contact method mapped to the department_contacts 
+ *              table, supporting multiple contact types per department.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.model;
 
 public class DepartmentContact {

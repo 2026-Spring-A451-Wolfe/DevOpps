@@ -1,3 +1,13 @@
+ /**************************************************************************
+ * Filename: AuthController.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Exposes authentication endpoints for user registration and
+ *              login, returning JWT tokens upon successful authentication.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
+
 // This is what frontend will call
 package com.example.web.controller;
 

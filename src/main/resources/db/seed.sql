@@ -1,11 +1,11 @@
--- This file populates the database with initial testing data.
--- HOW TO RUN:
---   Run schema.sql first, then run this file in DataGrip.
---
--- TEST LOGIN CREDENTIALS:
---   Admin:   email: admin@nola.gov    password: Test@1234
---   Citizen: email: citizen@nola.gov  password: Test@1234
--- ============================================================
+------------------------------------------------------------------
+-- Filename: seed.sql
+-- Project: Infrastructure Reporting & Tracking System
+-- Description: Inserts initial data into database tables, including
+--              departments and their contact information.
+-- Author: Sophina Nichols
+-- Date Last Modified: 03/03/2026
+------------------------------------------------------------------
 
 
 -- ============================================================

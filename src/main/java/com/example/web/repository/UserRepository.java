@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: UserRepository.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Handles database operations for the users table, including 
+ *              user lookup and account management queries.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.repository;
 
 import com.example.web.model.User;

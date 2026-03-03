@@ -1,3 +1,13 @@
+ /**************************************************************************
+ * Filename: AuthService.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Contains business logic for user registration, authentication,
+ *              password validation, and JWT token generation.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
+
 // Logic for registration and login
 package com.example.web.service;
 

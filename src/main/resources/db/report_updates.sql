@@ -1,4 +1,12 @@
--- Table for 1:M relationship between a report and the updates it goes through --
+------------------------------------------------------------------
+-- Filename: report_updates.sql
+-- Project: Infrastructure Reporting & Tracking System
+-- Description: Creates and defines the report_updates table used to
+--              track status changes and maintain report history logs,
+--              Showing the 1:M relationship between reports and updates.
+-- Author: Carter Roberts
+-- Date Last Modified: 03/03/2026
+------------------------------------------------------------------
 CREATE TABLE report_updates
 (
     id              BIGSERIAL PRIMARY KEY, -- identifier for report update
@@ -20,6 +28,7 @@ CREATE TABLE report_updates
     comment         VARCHAR(32), -- optional (thus can be null) short comment admin added to report update
     updated_at      TIMESTAMP NOT NULL DEFAULT NOW(), -- Timestamp for when report was updated'
 );
+
 --Before--
 --create table report_updates
 --(

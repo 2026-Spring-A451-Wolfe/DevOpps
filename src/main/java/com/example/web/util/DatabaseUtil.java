@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: DatabaseUtil.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Provides centralized database connection management and utility
+ *              methods for interacting with the application’s data source.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.util;
 
 import org.postgresql.ds.PGSimpleDataSource;

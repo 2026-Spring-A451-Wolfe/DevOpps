@@ -1,3 +1,12 @@
+------------------------------------------------------------------
+-- Filename: department_contacts.sql
+-- Project: Infrastructure Reporting & Tracking System
+-- Description: Creates and defines the structure of the department_contacts
+--              table, allowing multiple contact methods per department.
+-- Author: Sophina Nichols
+-- Date Last Modified: 03/03/2026
+------------------------------------------------------------------
+
 CREATE TABLE department_contacts (
     id              BIGSERIAL PRIMARY KEY,
     department_id   INTEGER NOT NULL REFERENCES departments(id) ON DELETE CASCADE,

@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: RegisterRequest.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Data Transfer Object used to capture user registration details
+ *               before creating a new system account.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 // Represents the data a user sends when signing up 
 package com.example.web.dto;
 

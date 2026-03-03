@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: JwtUtil.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Provides methods for generating, validating, and parsing JSON
+ *              Web Tokens used for secure authentication.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.util;
 
 import io.jsonwebtoken.*;

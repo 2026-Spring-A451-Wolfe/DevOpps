@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: DepartmentContactDTO.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Data Transfer Object used to safely transfer department 
+ *              contact information between the backend and client.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.dto;
 
 public class DepartmentContactDTO {

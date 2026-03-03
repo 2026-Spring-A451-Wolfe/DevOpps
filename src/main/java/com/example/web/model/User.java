@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: User.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Represents a registered system user mapped to the users table,
+ *              including authentication credentials and role assignment.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.model;
 
 import java.sql.Timestamp;

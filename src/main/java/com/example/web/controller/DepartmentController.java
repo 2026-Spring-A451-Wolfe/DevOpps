@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: DepartmentController.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Exposes REST endpoints for retrieving and managing city
+ *              departments and their associated contact information.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.controller;
 
 import com.example.web.dto.DepartmentDTO;

@@ -1,3 +1,12 @@
+ /**************************************************************************
+ * Filename: PasswordUtil.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: Provides secure password hashing and verification utilities
+ *              to protect user credentials.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.util;
 
 import org.mindrot.jbcrypt.BCrypt;
