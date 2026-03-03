@@ -15,12 +15,12 @@
 INSERT INTO departments (name, description, contact_email, contact_phone) VALUES
 ('Public Works',
  'Handles road and infrastructure repairs',
- 'publicworks@nola.gov',
+ 'dpq@nola.gov',
  '(504) 658-8000'),
 
 ('Sewage & Water Board',
  'Manages water and sewage systems',
- 'swb@nola.gov',
+ 'NULL',
  '(504) 529-2837'),
 
 ('Department of Public Safety',
