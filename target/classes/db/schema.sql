@@ -1,0 +1,17 @@
+-- This file creates all the database tables for the NOLA
+-- Infrastructure Reporting & Tracking System.
+--
+-- Tables must be created in this exact order due to foreign
+-- key dependencies. Dropping tables must be done in reverse.
+--
+-- Creation Order:
+--   1. departments   (no dependencies)
+--   2. users         (no dependencies)
+--   3. reports       (depends on users)
+--   4. report_updates (depends on reports, users, departments)
+--   5. report_images  (depends on reports)
+--
+-- HOW TO RUN:
+--   Open DataGrip, connect to your local nola_db database,
+--   open this file and click Run.
+-- ============================================================
