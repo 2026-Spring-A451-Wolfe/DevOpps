@@ -41,7 +41,7 @@ public class DepartmentService {
                 .collect(Collectors.toList());
     }
 
-    public DepartmentDTO getDepartmentById(int id) throws SQLException {
+    public DepartmentDTO getDepartmentById(long id) throws SQLException {
         return departmentRepository.findById(id)
                 .map(this::toDTO)
                 .orElseThrow(() -> new RuntimeException("Department not found with id: " + id));

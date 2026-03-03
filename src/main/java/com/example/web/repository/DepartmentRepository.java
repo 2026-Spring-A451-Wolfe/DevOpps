@@ -49,13 +49,13 @@ public class DepartmentRepository {
         return departments;
     }
 
-    public Optional<Department> findById(int id) throws SQLException {
+    public Optional<Department> findById(long id) throws SQLException {
         String sql = "SELECT * FROM departments WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
+            ps.setLong(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Department dept = mapRow(rs);
