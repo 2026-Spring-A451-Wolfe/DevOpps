@@ -9,38 +9,43 @@
 
 package com.example.web.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class User {
-    private int id;
+    private long id;
     private String username;
     private String email;
+    private String phone;
     private String passwordHash;
     private String role;
     private boolean isActive;
-    private Timestamp dateCreated;
+    private LocalDateTime dateCreated;
 
     // Empty constructor
     public User() {}
 
     // Constructor for registering a new user
-    public User(String username, String email, String passwordHash, String role) {
+    public User(String username, String email, String phone, String passwordHash, String role) {
         this.username = username;
         this.email = email;
+        this.phone = phone;
         this.passwordHash = passwordHash;
         this.role = role;
         this.isActive = true;
     }
 
     // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
@@ -51,6 +56,6 @@ public class User {
     public boolean isActive() { return isActive; }
     public void setActive(boolean active) { isActive = active; }
 
-    public Timestamp getDateCreated() { return dateCreated; }
-    public void setDateCreated(Timestamp dateCreated) { this.dateCreated = dateCreated; }
+    public LocalDateTime getDateCreated() { return dateCreated; }
+    public void setDateCreated(LocalDateTime dateCreated) { this.dateCreated = dateCreated; }
 }

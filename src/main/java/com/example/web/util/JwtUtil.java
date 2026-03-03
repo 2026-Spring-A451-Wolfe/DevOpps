@@ -20,7 +20,7 @@ public class JwtUtil {
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     // Generate a token for a logged in user
-    public static String generateToken(int userId, String username, String role) {
+    public static String generateToken(long userId, String username, String role) {
         return Jwts.builder()
                 .setSubject(String.valueOf(userId))
                 .claim("username", username)
@@ -41,8 +41,8 @@ public class JwtUtil {
     }
 
     // Extract user ID from a token
-    public static int getUserId(String token) {
-        return Integer.parseInt(validateToken(token).getSubject());
+    public static long getUserId(String token) {
+        return Long.parseLong(validateToken(token).getSubject());
     }
 
     // Extract role from a token

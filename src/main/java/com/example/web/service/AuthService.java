@@ -1,14 +1,12 @@
  /**************************************************************************
  * Filename: AuthService.java
  * Project: Infrastructure Reporting & Tracking System
- * Description: Contains business logic for user registration, authentication,
- *              password validation, and JWT token generation.
+ * Description: Handles registration logic (password validation, BCrypt hashing)
+ *              and login logic (BCrypt verification, JWT token generation).
  * Author: Sophina Nichols
  * Date Last Modified: 03/03/2026
  **************************************************************************/
 
-
-// Logic for registration and login
 package com.example.web.service;
 
 import com.example.web.dto.LoginRequest;
@@ -19,7 +17,8 @@ import com.example.web.util.JwtUtil;
 import com.example.web.util.PasswordUtil;
 
 public class AuthService {
-     private final UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     public AuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -29,7 +28,7 @@ public class AuthService {
     public User register(RegisterRequest request) throws Exception {
 
         // Validate username
-        if (request.getUsername() == null || request.getUsername().length() < 3) {
+        if (request.getUsername() == null || request.getUsername().trim().length() < 3) {
             throw new Exception("Username must be at least 3 characters");
         }
 
@@ -61,23 +60,28 @@ public class AuthService {
             throw new Exception("Email already registered");
         }
 
-        // Hash password and save user
+        // Hash password and build user using setters
         String hashedPassword = PasswordUtil.hashPassword(request.getPassword());
-        User newUser = new User(request.getUsername(), request.getEmail(), hashedPassword, "CITIZEN");
-        userRepository.save(newUser);
 
-        return newUser;
+        User newUser = new User();
+        newUser.setUsername(request.getUsername());
+        newUser.setEmail(request.getEmail());
+        newUser.setPhone(null);
+        newUser.setPasswordHash(hashedPassword);
+        newUser.setRole("Citizen");
+        newUser.setActive(true);
+
+        return userRepository.save(newUser);
     }
 
     // Login logic
     public String login(LoginRequest request) throws Exception {
 
-        // Find user by email
-        User user = userRepository.findByEmail(request.getEmail());
-        if (user == null) {
-            throw new Exception("Invalid email or password");
-        }
-     // Verify password
+        // Find user by email using Optional
+        User user = userRepository.findByEmail(request.getEmail())
+        .orElseThrow(() -> new Exception("Invalid email or password"));
+
+        // Verify password
         if (!PasswordUtil.verifyPassword(request.getPassword(), user.getPasswordHash())) {
             throw new Exception("Invalid email or password");
         }
