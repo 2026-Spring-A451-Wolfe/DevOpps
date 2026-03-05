@@ -1,11 +1,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Filename: AuthServiceTest.java                                                *
+ * Filename: AuthServiceTest.java                                              *
  * Project: NOLA Infrastructure Reporting & Tracking System                    *
- * Description: Contains all business logic for report management. Validates   *
- *              inputs, enforces access rules, coordinates between             *
- *              ReportRepository and other repositories, and maps results      *
- *              to DTOs before returning them to ReportController.             *
- * Author: Anderson Varela Suarez                                                     *
+ * Description: JUnit 5 test suite for AuthService. Covers user registration   *
+ *              validation, login credential verification, duplicate username  *
+ *              or email detection, password strength enforcement, BCrypt      *
+ *              hashing, and JWT generation.                                   *
+ * Author: Anderson Varela Suarez                                              *
  * Date Last Modified: 03/05/2026                                              *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
