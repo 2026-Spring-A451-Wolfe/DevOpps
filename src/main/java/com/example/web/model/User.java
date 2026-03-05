@@ -4,7 +4,7 @@
  * Description: Represents a registered system user mapped to the users table,   *
  *              including authentication credentials and role assignment.        *
  * Author: Sophina Nichols                                                       *
- * Date Last Modified: 03/03/2026                                                *
+ * Date Last Modified: 03/04/2026                                                *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.example.web.model;
@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 public class User {
     private long id;
     private String username;
-    private String email;
-    private String phone;
+    private String email_or_phone;
     private String passwordHash;
     private String role;
     private boolean isActive;
@@ -23,10 +22,9 @@ public class User {
 
     public User() {}
 
-    public User(String username, String email, String phone, String passwordHash, String role) {
+    public User(String username, String email_or_phone, String passwordHash, String role) {
         this.username = username;
-        this.email = email;
-        this.phone = phone;
+        this.email_or_phone = email_or_phone;
         this.passwordHash = passwordHash;
         this.role = role;
         this.isActive = true;
@@ -38,11 +36,8 @@ public class User {
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public String getEmailOrPhone() { return email_or_phone; }
+    public void setEmailOrPhone(String email_or_phone) { this.email_or_phone = email_or_phone; }
 
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }

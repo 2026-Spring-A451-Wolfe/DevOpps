@@ -14,7 +14,7 @@
  *              city departments and their contact information. Also includes      *
  *              commented-out sample users and reports for testing the map view.   *
  * Author: Sophina Nichols                                                         *
- * Date Last Modified: 03/03/2026                                                  *
+ * Date Last Modified: 03/04/2026                                                  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /* IMPORTANT!!!
@@ -77,7 +77,7 @@ INSERT INTO department_contacts (department_id, contact_type, label, value, is_e
 /* USERS */ 
 -- Both accounts use password: Test@1234
 -- Hashed with BCrypt cost factor 12
-INSERT INTO users (username, email, phone, password_hash, role) VALUES
+INSERT INTO users (username, email_or_phone, password_hash, role) VALUES
 ('admin_user',   'admin@nola.gov',   '$2a$12$pCkJkNzBqcDLwMbJXBWnHOQfh6Ah4pJ5qJxMBbGhMJyMWkFvJfKHa', 'Admin'),
 ('citizen_user', 'citizen@nola.gov', '$2a$12$pCkJkNzBqcDLwMbJXBWnHOQfh6Ah4pJ5qJxMBbGhMJyMWkFvJfKHa', 'Citizen');
 

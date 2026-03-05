@@ -32,8 +32,7 @@ CREATE TABLE department_contacts (
 CREATE TABLE users (
     id              BIGSERIAL PRIMARY KEY,
     username        VARCHAR(20) NOT NULL UNIQUE,
-    email           VARCHAR(100) NOT NULL UNIQUE,
-    phone           VARCHAR(20) UNIQUE,
+    email_or_phone  VARCHAR(255) NOT NULL UNIQUE,
     password_hash   VARCHAR(255) NOT NULL,
     role            VARCHAR(10) NOT NULL DEFAULT 'Citizen' 
             CONSTRAINT role_selections

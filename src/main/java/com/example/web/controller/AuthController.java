@@ -4,7 +4,7 @@
  * Description: Handles authentication endpoints for user registration and   *
  *              login, returning JWT tokens upon successful authentication.  *
  * Author: Sophina Nichols                                                   *
- * Date Last Modified: 03/03/2026                                            *
+ * Date Last Modified: 03/04/2026                                            *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.example.web.controller;
@@ -90,7 +90,7 @@ public class AuthController extends HttpServlet {
             resp.setStatus(201);    // Success (201)
             resp.getWriter().write(objectMapper.writeValueAsString(response));
         } catch (Exception e) {
-            resp.setStatus(400);    // Error (400): Validation failed or username/email is taken
+            resp.setStatus(400);    // Error (400): Validation failed or username/email/phone is taken
             Map<String, Object> error = new HashMap<>();
             error.put("success", false);
             error.put("message", e.getMessage());

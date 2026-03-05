@@ -4,7 +4,7 @@
  * Description: Handles registration logic (password validation & BCrypt hashing)  *
  *              and login logic (BCrypt verification & JWT token generation).      *
  * Author: Sophina Nichols                                                         *
- * Date Last Modified: 03/03/2026                                                  *
+ * Date Last Modified: 03/04/2026                                                  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.example.web.service;
@@ -18,9 +18,9 @@ import com.example.web.util.PasswordUtil;
 
 /* AuthService contains all user authentication logic.
  * Tasks:
- *      - Validate registration input (username length, email format,
+ *      - Validate registration input (username length, email/phone format,
  *        and password strength)
- *      - Check database for duplicate usernames or emails
+ *      - Check database for duplicate usernames or emails/phones
  *      - Hash passwords with BCrypt (cost factor 12)
  *      - Verify BCrypt password hashes on login
  *      - Generate JWT tokens for authenticated users
@@ -44,8 +44,8 @@ public class AuthService {
             throw new Exception("Username must be at least 3 characters");
         }
 
-        if (request.getEmail() == null || !request.getEmail().contains("@")) {
-            throw new Exception("Invalid email address");
+        if (request.getEmailOrPhone() == null || !request.getEmailOrPhone().contains("@")) {
+            throw new Exception("Invalid email address/phone number");
         }
 
         String password = request.getPassword();
@@ -65,16 +65,15 @@ public class AuthService {
         if (userRepository.findByUsername(request.getUsername()) != null) {
             throw new Exception("Username already taken");
         }
-        if (userRepository.findByEmail(request.getEmail()) != null) {
-            throw new Exception("Email already registered");
+        if (userRepository.findByEmailOrPhone(request.getEmailOrPhone()) != null) {
+            throw new Exception("Email/phone already registered");
         }
 
         String hashedPassword = PasswordUtil.hashPassword(request.getPassword());
 
         User newUser = new User();
         newUser.setUsername(request.getUsername());
-        newUser.setEmail(request.getEmail());
-        newUser.setPhone(null);
+        newUser.setEmailOrPhone(request.getEmailOrPhone());
         newUser.setPasswordHash(hashedPassword);
         newUser.setRole("Citizen");     // New accounts default to role "Citizen"
         newUser.setActive(true);
@@ -85,11 +84,11 @@ public class AuthService {
     // Authentication
     public String login(LoginRequest request) throws Exception {
 
-        User user = userRepository.findByEmail(request.getEmail())
-        .orElseThrow(() -> new Exception("Invalid email or password"));
+        User user = userRepository.findByEmailOrPhone(request.getEmailOrPhone())
+        .orElseThrow(() -> new Exception("Invalid email/phone or password"));
 
         if (!PasswordUtil.verifyPassword(request.getPassword(), user.getPasswordHash())) {
-            throw new Exception("Invalid email or password");
+            throw new Exception("Invalid email/phone or password");
         }
         
         return JwtUtil.generateToken(user.getId(), user.getUsername(), user.getRole());
