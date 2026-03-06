@@ -1,12 +1,3 @@
-------------------------------------------------------------------
--- Filename: seed.sql
--- Project: Infrastructure Reporting & Tracking System
--- Description: Inserts initial data into database tables, including
---              departments and their contact information.
--- Author: Sophina Nichols
--- Date Last Modified: 03/03/2026
-------------------------------------------------------------------
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Filename: seed.sql                                                              *
  * Project: NOLA Infrastructure Reporting & Tracking System                        *
@@ -14,12 +5,11 @@
  *              city departments and their contact information. Also includes      *
  *              commented-out sample users and reports for testing the map view.   *
  * Author: Sophina Nichols                                                         *
- * Date Last Modified: 03/04/2026                                                  *
+ * Date Last Modified: 03/05/2026                                                  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /* IMPORTANT!!!
- * Run schema.sql before running this file.
- * Tables must exist before data can be inserted.
+ * Run schema.sql before running this file (Tables must exist before data can be inserted).
  */
 
 
@@ -30,14 +20,12 @@ INSERT INTO departments (name, jurisdiction, description) VALUES
 (
     'NOLA-311',
     'Orleans Parish',
-    'NOLA-311 is the official non-emergency service for New Orleans, allowing residents to report city maintaince issues
-     like potholes, streetlight outages, and drainage issues.'
+    'NOLA-311 is the official non-emergency service for New Orleans, allowing residents to report city maintaince issues like potholes, streetlight outages, and drainage issues.'
 ),
 (
     'Department of Public Works (Main Division)',
     'Orleans Parish',
-    'The DPW is responsible for maintaining and improving city infrastructure, including
-     streets, sidewalks, streetlights, traffic signals, and street signs. '
+    'The DPW is responsible for maintaining and improving city infrastructure, including streets, sidewalks, streetlights, traffic signals, and street signs. '
 ),
 (
     'Department of Public Works (Maintenance Division)',
@@ -58,21 +46,21 @@ INSERT INTO departments (name, jurisdiction, description) VALUES
 /* DEPARTMENT CONTACTS */
 -- Pre-loads contact methods for each department.
 INSERT INTO department_contacts (department_id, contact_type, label, value, is_emergency) VALUES
-(1, 'phone', 'Call NOLA-311', '311'),
-(1, 'email', 'Email NOLA-311', '311@nola.gov'),
-(1, 'website', 'NOLA-311 Website/Service Request', 'https://nola311.org'),
+(1, 'phone',    'Call NOLA-311',                '311', FALSE),
+(1, 'email',    'Email NOLA-311',               '311@nola.gov', FALSE),
+(1, 'website',  'NOLA-311 Service Request',     'https://nola311.org', FALSE),
 
-(2, 'phone', 'Call DPW Main Divion', '(504) 658-8000'),
-(2, 'email', 'Email DPW Main Divion', 'dpw@nola.gov'),
+(2, 'phone',    'Call DPW Main Division',         '(504) 658-8000', FALSE),
+(2, 'email',    'Email DPW Main Division',        'dpw@nola.gov', FALSE),
 
-(3, 'phone', 'Call DPW Maintenance Divion', '(504) 658-8151'),
-(3, 'phone', 'Call DPW Maintenance Divion', '(504) 658-8152'),
+(3, 'phone',    'Call DPW Maintenance Division',  '(504) 658-8151', FALSE),
+(3, 'phone',    'Call DPW Maintenance Division',  '(504) 658-8152', FALSE),
 
-(4, 'phone', 'Call DPW Traffic Divion', '(504) 658-8040'),
-(4, 'email', 'Email DPW Traffic Divion', 'TrafficReviewDPW@nola.gov'),
+(4, 'phone',    'Call DPW Traffic Division',      '(504) 658-8040', FALSE),
+(4, 'email',    'Email DPW Traffic Division',     'TrafficReviewDPW@nola.gov', FALSE),
 
-(5, 'website', 'Report an Issue/Service Request', 'https://www.swbno.org/CustomerService/ReportAnIssue'),
-(5, 'phone', 'Emergency Flood Line', '504-529-2837', TRUE);
+(5, 'website',  'Report a Service Request',     'https://www.swbno.org/CustomerService/ReportAnIssue', FALSE),
+(5, 'phone',    'Emergency Flood Line',         '504-529-2837', TRUE);
 
 /* USERS */ 
 -- Both accounts use password: Test@1234
@@ -81,8 +69,13 @@ INSERT INTO users (username, email_or_phone, password_hash, role) VALUES
 ('admin_user',   'admin@nola.gov',   '$2a$12$pCkJkNzBqcDLwMbJXBWnHOQfh6Ah4pJ5qJxMBbGhMJyMWkFvJfKHa', 'Admin'),
 ('citizen_user', 'citizen@nola.gov', '$2a$12$pCkJkNzBqcDLwMbJXBWnHOQfh6Ah4pJ5qJxMBbGhMJyMWkFvJfKHa', 'Citizen');
 
-/* SAMPLE REPORTS */ 
+/* SAMPLE REPORTS */
+-- created_by = 2 references citizen_user above.
+-- last_update_id is NULL on insert — it will be set once the first
+-- report_update is inserted for this report.
+-- updated_at auto-populates via DEFAULT NOW().
 INSERT INTO reports (title, description, category, severity, latitude, longitude, status, created_by) VALUES
-('Large Pothole on Canal Street',
-'Deep pothole approximately 2 feet wide causing damage to vehicles.',
-'Pothole', 'High', 29.9584, -90.0776, 'Open', 2);
+(
+    'Large Pothole on Canal Street',
+    'Deep pothole approximately 2 feet wide causing damage to vehicles.',
+    'Pothole', 'High', 29.9584, -90.0776, 'Open', 2);

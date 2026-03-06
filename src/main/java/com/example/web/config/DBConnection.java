@@ -1,13 +1,15 @@
-/*
-This file manages the connection between the Java application and the PostgreSQL database.
-Instead of creating a new database connection every time one is needed, this class reuses
-a single connection (Singleton pattern) to keep things efficient. It reads database credentials
-from environment variables so that sensitive information like passwords are never hardcoded into the source code.
- * Environment variables required in your .env file:
- *   DB_URL      → jdbc:postgresql://localhost:5432/nola_db
- *   DB_USER     → your PostgreSQL username
- *   DB_PASSWORD → your PostgreSQL password
- */
+
+ /**************************************************************************
+ * Filename: DBConnection.java
+ * Project: Infrastructure Reporting & Tracking System
+ * Description: This file manages the connection between the Java application and the PostgreSQL database.
+ *              Instead of creating a new database connection every time one is needed, this class reuses
+ *              a single connection (Singleton pattern) to keep things efficient. It reads database credentials
+ *              from environment variables so that sensitive information like passwords are never hardcoded into the source code.
+ * Author: Sophina Nichols
+ * Date Last Modified: 03/03/2026
+ **************************************************************************/
+
 package com.example.web.config;
 
 import java.sql.Connection;
