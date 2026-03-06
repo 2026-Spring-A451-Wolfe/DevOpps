@@ -1,4 +1,3 @@
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Filename: schema.sql                                                        *
  * Project: NOLA Infrastructure Reporting & Tracking System                    *

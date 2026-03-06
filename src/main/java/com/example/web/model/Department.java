@@ -2,7 +2,7 @@
  * Filename: Department.java                                                     *
  * Project: NOLA Infrastructure Reporting & Tracking System                      *
  * Description: Model class that mirrors the departments table in the database,  *
- *              were each instance represents one city department.             *
+ *              were each instance represents one city department.               *
  * Author: Sophina Nichols                                                       *
  * Date Last Modified: 03/03/2026                                                *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
