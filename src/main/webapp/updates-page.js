@@ -1,6 +1,6 @@
 /* Author: Javier Garcia
 Purpose: Javascript functionality for the updates page
-Last Modified: 3/06/2026 */
+Last Modified: 3/08/2026 */
 
 
 // Wait until the page is fully loaded
@@ -39,6 +39,7 @@ async function fetchReportUpdates() {
             statusChange: "Under Review",
             statusLabel: "Processed",
             date: "February 20, 2026"
+            // for better testing, this data should match what backend team plans to store for each report
         },
         {
             reportName: "Broken Streetlight",
@@ -66,6 +67,8 @@ async function fetchReportUpdates() {
 /*
 CREATE UPDATE CARD
 Builds the HTML structure from the report data
+!! Report card structure may require fetching more attirbutes than what is included here, TBD by backend team !!
+
 */
 
 function createUpdateCard(report) {
