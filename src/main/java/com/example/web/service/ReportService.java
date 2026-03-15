@@ -8,9 +8,13 @@
  * Author: Adin Hultin                                                         *
  * Date Last Modified: 03/05/2026                                              *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 package com.example.web.service;
 
+import com.example.web.dto.ReportRequest;
+import com.example.web.model.Report;
+import com.example.web.repository.ReportRepository;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public class ReportService {
